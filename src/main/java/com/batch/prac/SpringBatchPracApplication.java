@@ -11,5 +11,4 @@ public class SpringBatchPracApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SpringBatchPracApplication.class, args);
 	}
-
 }
