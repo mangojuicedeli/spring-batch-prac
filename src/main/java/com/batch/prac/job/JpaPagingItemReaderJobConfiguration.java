@@ -12,7 +12,7 @@ import org.springframework.batch.item.database.builder.JpaPagingItemReaderBuilde
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.batch.prac.vo.Pay;
+import com.batch.prac.entity.Pay;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

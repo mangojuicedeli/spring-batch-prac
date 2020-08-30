@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 
-import com.batch.prac.vo.Pay;
+import com.batch.prac.entity.Pay;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -48,9 +48,9 @@ public class JdbcCursorItemReaderJobConfiguration {
     @Bean
     public JdbcCursorItemReader<Pay> jdbcCursorItemReader() {
         return new JdbcCursorItemReaderBuilder<Pay>()
-                .fetchSize(chunkSize)
+                .fetchSize(chunkSize) // chunksize 만큼 메모리에 올려놓고, read() 에서 순차적으로 하나씩 읽어 writer에게 넘겨주고, 주기적으로 commit 된다.
                 .dataSource(dataSource) // db에 접근하기 위해 사용할 dataSource 객체
-                .rowMapper(new BeanPropertyRowMapper<>(Pay.class)) // 커서에 있는 쿼리 결과를 자바 오브젝트에 매핑
+                .rowMapper(new BeanPropertyRowMapper<>(Pay.class)) // 쿼리 결과를 파라미터로 넘긴 자바 오브젝트에 매핑
                 .sql("SELECT id, amount, tx_name, tx_date_time FROM pay")
                 .name("jdbcCursorItemReader")
                 .build();

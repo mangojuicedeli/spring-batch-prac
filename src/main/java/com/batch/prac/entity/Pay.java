@@ -1,4 +1,4 @@
-package com.batch.prac.vo;
+package com.batch.prac.entity;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
